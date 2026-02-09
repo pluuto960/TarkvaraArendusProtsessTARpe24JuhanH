@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Prototyping ehk Prototüüpimine</title>
+</head>
+<body class="light-mode">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.remove('light-mode', 'dark-mode');
+            document.body.classList.add(savedTheme + '-mode');
+        });
+        </script>
+
+    <a href="../index.html">Tagasi Avalehele</a><br><br>
+
+    <h1>Prototüüpimine</h1>
+    <p>
+            Prototüüpimine on lihtne näidisversioon mida kasutatakse disaini katsetamiseks ja ideede demonstreerimiseks. <br>
+        Prototüüpimist vüib teha mitmel erineval põhimõttel - nt <strong>ühekordne prototüüpimine</strong> (Throw away prototyping), <strong>evolutsiooniline prototüüpimine</strong> <br>
+        (Evolutionary prototyping), <strong>lisanduv prototüüpimine</strong>(incremental prototyping). <br><br>
+
+        Ühekordne prototüüpimine - prototüüp mis likvideeritakse peale kasutust. Kas siis selle tõttu, et antud prototüübi baas ei <br>
+        sobi edasiseks arenduseks, funktsioonid ei tööta või see ei vasta muudele kvaliteedi nõuetele. <br><br>
+
+        Evolutsiooniline prototüüpimine - ... <br><br>
+
+        Inkrementaalne prototüüpimine - ...
+    </p><br><br>
+    <h2>Prototüüpimis etapid:</h2>
+    <p>
+        <!----> 
+    </p>
+    <h3>1. Etapp - Nõuete kogumine </h3>
+    <p>
+        <!----> 
+    </p>
+    <h3>2. Etapp - Kiire kavandamine</h3>
+    <p>
+        <!----> 
+    </p>
+    <h3>3. Etapp</h3>
+    <p>
+        <!----> 
+    </p>
+
+    <h2>Arendusmudeli joonis:</h2>
+    <img src="../assets/prototyping.jpeg" alt="Prototüüpimise joonis"><br><br>
+    <h2>Arendusmudeli head ja vead</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Head küljed</th>
+                <th>Halvad küljed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Parem kasutusmugavus</td>
+                <td>Liigne arendamisaeg - võib juhtuda, et jäädakse prototüüpi tweakima liialt kauaks ja see omakorda kahjustab <br>
+                    arendamis kiirust päris projektil.</td>
+            </tr>
+            <tr>
+                <td>Täpsem ühildumine kasutaja tegelike vajadustega</td>
+                <td>Prototüüpimisel on rahaline kahju. Mille käigus reaalne projekt ei arene absoluutselt.</td>
+            </tr>
+            <tr>
+                <td>Parem kvaliteet ja hooldatavus</td>
+                <td>Kasutaja segadus - vahepeal luuakse feature'id mis on prototüübis olemas aga lõpuks eemaldatakse lõppprojektis, <br>
+                    antud olukord võib klienti panna pettuma.</td>
+            </tr>
+            <tr>
+                <td>Väiksem vaev arendamisel</td>
+                <td>Liigne fookus ühele süsteemi osale, ülejäänud projektiosad võivad jääda tahaplaanile</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>ALLIKAD:</h2>
+    <a href="https://eopearhiiv.edu.ee/e-kursused/eucip/arendus/1224_prototpimine.html">EUCIP</a><br>
+    <a href="https://www.teach-ict.com/as_a2_ict_new/ocr/A2_G063/331_systems_cycle/prototyping_RAD/miniweb/pg2.htm">Teach-ICT</a><br>
+ 
+
+
+
+</body>
+</html>
