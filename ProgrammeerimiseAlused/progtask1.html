@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>ProgTask1</title>
+</head>
+<body class="light-mode">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.remove('light-mode', 'dark-mode');
+            document.body.classList.add(savedTheme + '-mode');
+        });
+    </script>
+    <a href="../ProgrammeerimiseAlused/programmeerimisealused.html" class="back">Tagasi</a><br><br>
+
+    <h1>ProgTask1</h1>
+
+    <h3>Kalkulaator</h3>
+    <p>
+        Siin lõime lihtsa kalkulaatori mis suudab 2 arvu liita/lahutada/korrutada/jagada/kahe arvu ruudud lahutada
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask1
+            {
+                static class SimpleCalculator
+                {
+                    public static void Calculator()
+                    {
+                        string value;
+                        do
+                        {
+                            double num1 = 0;
+                            double num2 = 0;
+                            double res = 0;
+
+
+                            // res;
+                            Console.WriteLine("Enter first number:");
+                            num1 = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter second number:");
+                            num2 = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter symbol(/,+,-,*,root-root(:)):");
+                            string symbol = Console.ReadLine();
+
+                            switch (symbol)
+                            {
+                                case "+":
+                                    res = num1 + num2;
+                                    Console.WriteLine("Addition:" + res);
+                                    break;
+                                case "-":
+                                    res = num1 - num2;
+                                    Console.WriteLine("Subtraction:" + res);
+                                    break;
+                                case "*":
+                                    res = num1 * num2;
+                                    Console.WriteLine("Multiplication:" + res);
+                                    break;
+                                case "/":
+                                    res = num1 / num2;
+                                    Console.WriteLine("Division:" + res);
+                                    break;
+                                case ":":
+                                    double input1Dbl = (double)num1;
+                                    double input1Sqrt = Math.Sqrt(input1Dbl);
+                                    if (num1 < 0)
+                                    {
+                                        Console.WriteLine("Cant calculate from a negative number");
+                                    }
+                                    double input2Dbl = (double)num2;
+                                    double finalAnswer = (input1Sqrt - input2Dbl);
+                                    Console.WriteLine("Answer :" + finalAnswer);
+                                    break;
+                            }
+                            Console.ReadKey();
+                            Console.Write("Do you want to use the cal again(y/n):");
+                            value = Console.ReadLine();
+                        }
+                        while (value == "y" || value == "Y");
+                    }
+
+                }
+            }
+
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/ProgTask1/ProgTask1/ProgTask1/SimpleCalculator.cs">Link ProgTask1 Kalkulaatorile</a>
+    
+    <h3>AgeClassifier</h3>
+    <p>
+        Siin lõime programmi mis andis consoleis vastavalt vanusele teise vaste.
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask1
+            {
+                static class AgeClassifier
+                {
+                    public static void ClassifyAge()
+                    {
+
+                        Console.WriteLine("Mis on teie vanus?");
+                        int age = Int32.Parse(Console.ReadLine());
+                        if (age <= 13)
+                        {
+                            Console.WriteLine("Naudi oma lapsepõlve!");
+                        }
+                        else if (age >= 13 && age <= 19)
+                        {
+                            Console.WriteLine("Need on mõned mässulised teismeliseaastad!");
+                        }
+                        else if (age >= 20 && age <= 65)
+                        {
+                            Console.WriteLine("Tere tulemast täiskasvanute maailma!");
+                        }
+                        else if (age >= 65)
+                        {
+                            Console.WriteLine("Haara kinni oma kuldaastate tarkusest!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Kuidas me jõudsime siia");
+                        }
+                    }
+                }
+            }
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/ProgTask1/ProgTask1/ProgTask1/AgeClassifier.cs">Link ProgTask1 AgeClassifier'ile</a>
+
+    <h3>QuizGame</h3>
+    <p>
+        Siin lõime kerge mälumängu mis luges pärast kokku sinu punktid ja negatiivse punktiskoori korral andis nõu rohkem õppida.
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask1
+            {
+                static class QuizGame
+                {
+                    public static void Quiz()
+                    {
+                        // Kysimused
+                        string[] questions =
+                            {
+                            "Which country invented WISE?",               
+                        };
+
+                        // Vastused
+                        string[] answers =
+                            {
+                            "A. Estonia \nB.Finland \nC.Russia"
+                            };
+
+                        // Õiged vastused
+                        int[] correctAnswers = { 0 };
+                        int playerscore = 0;
+
+                        // bool boolvastus = 100; ----- EI TOOTA
+
+
+                        Console.WriteLine("\t--Test of knowledge--");
+                        for (int i = 0; i < questions.Length; i++)
+                        {
+                            Console.WriteLine("Question " + (i + 1));
+                            Console.WriteLine(questions[i]);
+                            Console.WriteLine(answers[i]);
+                            Console.Write("Please enter your answer : ");
+                        }
+                            char playerAnswer = char.Parse(Console.ReadLine());
+                            if (playerAnswer == 'A')
+                            {
+                                playerscore++;
+                            }
+
+                        
+                        
+
+                            Console.WriteLine("What degree celsius does water boil at? : ");
+                            double playeranswer2 = Convert.ToDouble(Console.ReadLine());
+                            if (playeranswer2 == 100)
+                            {
+                                playerscore++;
+                            }
+
+                            Console.WriteLine("Do apples grow on bushes (true/false) : ");
+                            bool playeranswer3 = bool.Parse(Console.ReadLine());
+                            if (playeranswer3 == false)
+                            {
+                                playerscore++;
+                            }
+
+                        
+
+                        // quiz läbi
+                        // Skoori arvutamine
+                        Console.WriteLine("Quiz completed!");
+                        Console.WriteLine("Your score is: " + playerscore + "/" + "3");
+                        if (playerscore == 3)
+                        {
+                            Console.WriteLine("Congratulations! You answered all the questions correctly");
+                        }
+                        else if (playerscore == 0 || playerscore == 1 || playerscore == 2)
+                        {
+                            Console.WriteLine("You answered some questions wrong, try again ");
+                        }
+                    }
+                }
+            }
+        </code>
+    </pre>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/ProgTask1/ProgTask1/ProgTask1/QuizGame.cs">Link ProgTask1 QuizGame'ile</a>
+</body>
+</html>
