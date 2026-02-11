@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>ProgTask1</title>
+</head>
+<body class="light-mode">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.remove('light-mode', 'dark-mode');
+            document.body.classList.add(savedTheme + '-mode');
+        });
+    </script>
+    <a href="../ProgrammeerimiseAlused/programmeerimisealused.html" class="back">Tagasi</a><br><br>
+
+    <h1>ProgTask2</h1>
+    <h3>Meetodite välja kutsumine</h3>
+    <p>
+        Siin õppisime kuidas kutsuda välja meetodeid läbi program.cs'i
+    </p>
+    <pre>
+        <code>
+            using System.Runtime.InteropServices;
+            using System.Security.Cryptography.X509Certificates;
+
+            namespace ProgTask2
+            {
+                internal class Program
+                {
+                    static void Main(string[] args)
+                    {
+
+
+                        Console.WriteLine("\tProtsendi kalkulaator");
+                        Percentage.Calculation1(); // 1) Protsendi calc
+                        Console.WriteLine("//////////////////////////////////////////////////////////////////");
+
+                        Console.WriteLine("\tListi sorteerija ");
+                        Meetod2.List(); // 2) For loopiga list
+                        Console.WriteLine("//////////////////////////////////////////////////////////////////");
+
+                        Console.WriteLine("\tNumbri leidmis mäng");
+                        NumbGuessGame.Game(); // 5) Numbri leidmis mäng
+                        Console.WriteLine("//////////////////////////////////////////////////////////////////");
+
+                        Console.WriteLine("\tLahedad tärnid");
+                        Stars.PrintCharacters(); // 6) For loop for loopi sees
+                        Console.WriteLine("//////////////////////////////////////////////////////////////////");
+                        
+
+                        Console.ReadKey();
+                    }
+                }    
+            }
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/Progtask2/ProgTask2/Program.cs">Link ProgTask2 Program.cs'i</a>
+
+    <h3>Meetod2</h3>
+    <p>
+        Meetod2's õppisime kuidas lisada asju listi
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask2
+            {
+                static class Meetod2
+                {
+                    public static void List()
+                    {
+                        var Item1 = "";
+                        var Item2 = "";
+                        var Item3 = "";
+
+
+                        Console.WriteLine("\nEnter 3 items");
+                        Item1 = Convert.ToString(Console.ReadLine());
+                        Item2 = Convert.ToString(Console.ReadLine());
+                        Item3 = Convert.ToString(Console.ReadLine());
+
+                        var list1 = new List<string> { Item1, Item2, Item3 };
+                        list1.Sort();
+                        Console.WriteLine("Sorted items : ");
+                        for (int index = 0; index < list1.Count; index++)
+                        {
+                            Console.WriteLine($"\t{list1[index]}");
+                        }
+                    }
+                }
+            }
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/Progtask2/ProgTask2/Meetod2.cs">Meetod 2 link</a>
+
+    
+    <h3>NumbGuessGame</h3>
+    <p>
+        Tegime mängu kus kasutaja peab konsoolis numbri sisestama, õige numbri leidmisel saatsime välja Console.Writeline'i õnnitlusega.
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask2
+            {
+                static class NumbGuessGame
+                {
+                    public static void Game()
+                    {
+                        
+                        Console.Write("\nGuess a number im thinking of : ");
+                        double answ = Convert.ToDouble(Console.ReadLine());
+
+                        while (answ != 12)
+                        {
+                            Console.Write("Try again : ");
+                            answ = Convert.ToDouble(Console.ReadLine());
+
+
+
+                        }
+
+                        Console.WriteLine("You got it right hooray!!!");
+
+                    }
+                }
+            }
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/Progtask2/ProgTask2/NumbGuessGame.cs">NumbGuessGame link</a>
+
+
+    <h3>PercentageFinder</h3>
+    <p>
+        Kasutaja sisestab numbri ja seejärel % mida tahab näha.
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask2
+            {
+                static class Percentage
+                {
+                    public static void Calculation1()
+                    {
+                        double x = 0;
+                        double y = 0;
+                        double res = 0;
+
+                        Console.WriteLine("\nPercentage Finder");
+                        Console.WriteLine("Enter number u want % found from :");
+                        x = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter the % u want to see :");
+                        y = Convert.ToDouble(Console.ReadLine());
+
+
+                        Console.Beep();
+                        res = x * (y / 100);
+                        Console.WriteLine("The answer is : " + res);
+                    }
+                    
+
+                }
+            }
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/Progtask2/ProgTask2/Percentage.cs">Percentage</a>
+
+    <h3>Stars</h3>
+    <p>
+        Projekt kus õppisime nested loope kasutama ja printisime *'idest mustri.
+    </p>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+            namespace ProgTask2
+            {
+                static class Stars
+                {
+                    public static void PrintCharacters() // ehk nested loop
+                    {
+                        Console.WriteLine();
+                        for (int i = 7; i >= 1 ; i--) 
+                        {
+                            for (int j = 1; j <= i; j++)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine();
+                        }
+
+                    }
+                }
+            }
+        </code>
+    </pre>
+    <br>
+    <a href="https://github.com/pluuto960/TARpe24_Prog_JuhanH/blob/master/Homework/Progtask2/ProgTask2/Stars.cs">Stars link</a>
+<br><br>
+<a href="../ProgrammeerimiseAlused/progtask3.html" class="next">ProgTask3!</a><br><br>
